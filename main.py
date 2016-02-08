@@ -42,15 +42,24 @@ def download_from_himawari():
 
     from urllib.request import urlopen
     import io
+    import time
 
     for i in range(NUMBLOCKS):
         for j in range(NUMBLOCKS):
             url_part = url + '_{}_{}.png'.format(i, j)
             print('Download url: {}.'.format(url_part))
 
-            with urlopen(url_part) as f:
-                part_im = Image.open(io.BytesIO(f.read()))
-                im.paste(part_im, (i * WIDTH, j * WIDTH))
+            while True:
+                try:
+                    with urlopen(url_part) as f:
+                        part_im = Image.open(io.BytesIO(f.read()))
+                        im.paste(part_im, (i * WIDTH, j * WIDTH))
+                except Exception as e:
+                    print(e)
+                    time.sleep(60)
+                    continue
+
+                break
 
     import os.path
     img_path = os.path.expanduser('~/Pictures/Himawari/wallpaper.jpg')
@@ -69,13 +78,15 @@ def download_from_himawari():
 # SOURCE: http://www.blog.pythonlibrary.org/2014/10/22/pywin32-how-to-set-desktop-background/
 def set_wallpaper(path):
     import ctypes
-    import win32con
+    # import win32con
 
     # This code is based on the following two links
     # http://mail.python.org/pipermail/python-win32/2005-January/002893.html
     # http://code.activestate.com/recipes/435877-change-the-wallpaper-under-windows/
     cs = ctypes.c_buffer(path.encode())
-    return ctypes.windll.user32.SystemParametersInfoA(win32con.SPI_SETDESKWALLPAPER, 0, cs, 0)
+    # return ctypes.windll.user32.SystemParametersInfoA(win32con.SPI_SETDESKWALLPAPER, 0, cs, 0)
+    SPI_SETDESKWALLPAPER = 0x14
+    return ctypes.windll.user32.SystemParametersInfoA(SPI_SETDESKWALLPAPER, 0, cs, 0)
 
 
 def run():

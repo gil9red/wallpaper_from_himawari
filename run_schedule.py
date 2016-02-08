@@ -6,10 +6,10 @@ __author__ = 'ipetrash'
 
 if __name__ == '__main__':
     import time
-    import main
+    from main import run
 
     while True:
-        main.run()
+        run()
         print('\n\n')
 
         # Every 30 minutes
