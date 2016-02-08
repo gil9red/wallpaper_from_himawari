@@ -82,10 +82,10 @@ def run():
     try:
         img_path = download_from_himawari()
 
-        # print('Setting Wallpaper...')
-        # set_wallpaper(img_path)
-        #
-        # print('Done!')
+        print('Setting Wallpaper...')
+        set_wallpaper(img_path)
+
+        print('Done!')
 
     except Exception as e:
         # Выводим ошибку в консоль
