@@ -54,6 +54,8 @@ def download_from_himawari():
                     with urlopen(url_part) as f:
                         part_im = Image.open(io.BytesIO(f.read()))
                         im.paste(part_im, (i * WIDTH, j * WIDTH))
+
+                # TODO: do for exception timeout
                 except Exception as e:
                     print(e)
                     time.sleep(60)
