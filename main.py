@@ -57,6 +57,10 @@ def download_from_himawari():
     img_path = os.path.normpath(img_path)
     print('Image path: {}.'.format(img_path))
 
+    # Если папки не существует, создаем
+    if not os.path.exists(os.path.dirname(img_path)):
+        os.makedirs(os.path.dirname(img_path))
+
     im.save(img_path)
 
     return img_path
@@ -74,17 +78,21 @@ def set_wallpaper(path):
     return ctypes.windll.user32.SystemParametersInfoA(win32con.SPI_SETDESKWALLPAPER, 0, cs, 0)
 
 
-if __name__ == '__main__':
+def run():
     try:
         img_path = download_from_himawari()
 
-        print('Setting Wallpaper...')
-        set_wallpaper(img_path)
-
-        print('Done!')
+        # print('Setting Wallpaper...')
+        # set_wallpaper(img_path)
+        #
+        # print('Done!')
 
     except Exception as e:
         # Выводим ошибку в консоль
         import traceback
         tb = traceback.format_exc()
         print(tb)
+
+
+if __name__ == '__main__':
+    run()
