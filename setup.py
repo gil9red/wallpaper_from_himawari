@@ -10,7 +10,15 @@
 from cx_Freeze import setup, Executable
 
 executables = [
-    Executable('main.py')
+    Executable(
+        'main.py',
+        # base='Win32GUI',
+    ),
+
+    Executable(
+        'run_schedule.py',
+        # base='Win32GUI',
+    )
 ]
 
 setup(name='wallpaper_from_himawari',
