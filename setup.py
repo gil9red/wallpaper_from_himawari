@@ -11,7 +11,7 @@ from cx_Freeze import setup, Executable
 
 executables = [
     Executable(
-        'main.py',
+        'run_one.py',
         # base='Win32GUI',
     ),
 
