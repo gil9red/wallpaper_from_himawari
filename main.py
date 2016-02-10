@@ -15,7 +15,7 @@ def download_from_himawari():
     print('Download from himawari...')
 
     from datetime import datetime, timedelta
-    print('Current date: .'.format(datetime.now().strftime('%d/%m/%Y %H:%M:%S')))
+    print('Current date: {}.'.format(datetime.now().strftime('%d/%m/%Y %H:%M:%S')))
 
     now = datetime.utcnow()
     now -= timedelta(minutes=30 + now.minute % 10, seconds=now.second)
@@ -60,8 +60,9 @@ def download_from_himawari():
 
                 # TODO: do for exception timeout
                 except Exception as e:
-                    print(e)
-                    time.sleep(60)
+                    TIMEOUT = 60
+                    print('Error: "{}". Next attempt through {} seconds.'.format(e, TIMEOUT))
+                    time.sleep(TIMEOUT)
                     continue
 
                 break
