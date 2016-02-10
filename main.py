@@ -8,12 +8,15 @@ __author__ = 'ipetrash'
 # Source: https://gist.github.com/anonymous/c453ebfb9c7e3149d84e
 
 
+PATTERN_URL = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/{level}/{width}/{year}/{month}/{day}/{time}"
+
+
 def download_from_himawari():
     print('Download from himawari...')
 
-    PATTERN_URL = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/{level}/{width}/{year}/{month}/{day}/{time}"
-
     from datetime import datetime, timedelta
+    print('Current date: .'.format(datetime.now().strftime('%d/%m/%Y %H:%M:%S')))
+
     now = datetime.utcnow()
     now -= timedelta(minutes=30 + now.minute % 10, seconds=now.second)
     print('Date time image: {}.'.format(now))
