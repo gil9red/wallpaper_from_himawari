@@ -6,7 +6,7 @@ __author__ = 'ipetrash'
 
 if __name__ == '__main__':
     import time
-    from main import run
+    from run_one import run
 
     while True:
         run()
