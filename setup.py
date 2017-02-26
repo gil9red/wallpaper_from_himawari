@@ -7,6 +7,7 @@
 # If everything works well you should find a subdirectory in the build
 # subdirectory that contains the files needed to run the script without Python
 
+# TODO: заменить на батник с pyinstaller
 from cx_Freeze import setup, Executable
 
 executables = [
