@@ -18,7 +18,8 @@ def download_from_himawari():
     print('Current date: {}.'.format(datetime.now().strftime('%d/%m/%Y %H:%M:%S')))
 
     now = datetime.utcnow()
-    now -= timedelta(minutes=30 + now.minute % 10, seconds=now.second)
+    #now -= timedelta(minutes=30 + now.minute % 10, seconds=now.second)
+    now -= timedelta(hours=2, minutes=30 + now.minute % 10, seconds=now.second)
     print('Date time image: {}.'.format(now))
 
     LEVEL = "4d"  # Level can be 4d, 8d, 16d, 20d
