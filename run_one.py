@@ -8,6 +8,9 @@ __author__ = 'ipetrash'
 # Source: https://gist.github.com/anonymous/c453ebfb9c7e3149d84e
 
 
+# TODO: поломанное изображение: http://himawari8-dl.nict.go.jp/himawari8/img/D531106/4d/550/2017/03/24/140000_0_3.png
+
+
 class NoImageException(Exception):
     pass
 
